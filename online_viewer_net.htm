@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>جمعية جذوة الرسالة | Jazwat AlRisala</title>
+  <meta name="description" content="جمعية جذوة الرسالة - جمعية تربوية ثقافية تطوعية مرخّصة في لبنان" />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a2e;
+      --text:#e9eefc;
+      --muted:#b7c3e6;
+      --accent:#6ee7ff;
+      --accent2:#a7f3d0;
+      --border:rgba(255,255,255,.12);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans Arabic", "Noto Naskh Arabic", sans-serif;
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(110,231,255,.18), transparent 60%),
+                  radial-gradient(900px 500px at 110% 10%, rgba(167,243,208,.14), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.85;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px; margin:0 auto; padding:24px}
+
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:14px 16px; border:1px solid var(--border);
+      background:rgba(15,26,46,.7); backdrop-filter: blur(10px);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      position: sticky; top: 14px; z-index: 10;
+    }
+    .brand{display:flex; flex-direction:column; gap:2px}
+    .brand .title{font-weight:900; font-size:18px; letter-spacing:.2px}
+    .brand .subtitle{color:var(--muted); font-size:13px}
+
+    .actions{
+      display:flex; align-items:center; gap:10px;
+      flex-wrap:wrap; justify-content:flex-end;
+    }
+    .btn{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      padding:10px 12px;
+      border-radius: 12px;
+      cursor:pointer;
+      font-weight:750;
+      font-size: 14px;
+    }
+    .btn:hover{background: rgba(255,255,255,.10)}
+    .btn.primary{
+      border-color: rgba(110,231,255,.35);
+      background: rgba(110,231,255,.12);
+    }
+
+    .hero{
+      margin-top:18px;
+      padding:28px 18px;
+      border-radius: var(--radius);
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(15,26,46,.85), rgba(15,26,46,.55));
+      box-shadow: var(--shadow);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap:18px;
+      align-items: start;
+    }
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+      .topbar{position:relative; top:0}
+    }
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color:var(--muted);
+      font-size: 13px;
+      width: fit-content;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: var(--accent2);
+      box-shadow: 0 0 0 4px rgba(167,243,208,.12);
+    }
+
+    h1{margin:12px 0 10px; font-size:34px; line-height:1.25}
+    .lead{color:var(--muted); font-size:16px; margin:0}
+    .lang-note{color: var(--muted); font-size: 13px}
+
+    .cards{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .card{
+      grid-column: span 6;
+      border:1px solid var(--border);
+      background: rgba(15,26,46,.65);
+      border-radius: var(--radius);
+      padding:16px 16px 14px;
+      box-shadow: 0 8px 22px rgba(0,0,0,.28);
+    }
+    .card.full{grid-column: span 12}
+    .card h2{margin:0 0 10px; font-size:18px}
+    .card p, .card li{color:var(--muted); margin:0}
+    .card ul{margin:0; padding-right: 18px; padding-left: 0}
+    .card p{margin-top:8px}
+
+    @media (max-width: 900px){
+      .card{grid-column: span 12}
+    }
+
+    .badge{
+      display:inline-flex; gap:8px; flex-wrap:wrap; margin-top:12px;
+    }
+    .tag{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      padding:8px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    blockquote{
+      margin:12px 0 0;
+      padding:12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(110,231,255,.22);
+      background: rgba(110,231,255,.07);
+      color: var(--text);
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    @media (max-width: 900px){ .contact-grid{grid-template-columns:1fr} }
+    .field{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      padding:10px 12px;
+      border-radius: 12px;
+      color: var(--muted);
+      overflow-wrap:anywhere;
+    }
+    .field strong{color: var(--text)}
+
+    .footer{
+      margin:22px 0 10px;
+      color: rgba(183,195,230,.85);
+      font-size: 13px;
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+
+    iframe.map{
+      width:100%;
+      height:260px;
+      border:0;
+      border-radius: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">
+        <div class="title" id="brandTitle">جمعية جذوة الرسالة</div>
+        <div class="subtitle" id="brandSub">جمعية تربوية • ثقافية • تطوعية • تنموية</div>
+      </div>
+
+      <div class="actions">
+        <button class="btn" onclick="scrollToSection('about')" id="navAbout">عن الجمعية</button>
+        <button class="btn" onclick="scrollToSection('mission')" id="navMission">الغاية والأهداف</button>
+        <button class="btn" onclick="scrollToSection('activities')" id="navActivities">الأنشطة</button>
+        <button class="btn" onclick="scrollToSection('contact')" id="navContact">تواصل معنا</button>
+        <button class="btn primary" id="langBtn" onclick="toggleLang()">EN</button>
+      </div>
+    </div>
+
+    <!-- ABOUT / HERO -->
+    <section class="hero" id="about">
+      <div class="hero-grid">
+        <div>
+          <div class="pill"><span class="dot"></span><span id="heroPill">جمعية مُرخّصة حديثًا في لبنان</span></div>
+          <h1 id="heroTitle">جمعية جذوة الرسالة</h1>
+          <p class="lead" id="heroLead">
+            جمعية تربوية ثقافية تطوعية تُسهم في التنمية الاجتماعية، وترتكز على احترام القيم الدينية والوطنية والحضارية.
+          </p>
+
+          <!-- NEW: Main Arabic definition sentences -->
+          <blockquote id="mainDefinition">
+            <strong>جملة تعريفية بالجمعية:</strong>
+            جمعية جذوة الرسالة ومضة تربوية، توقد وعي الأجيال بقيم راسخة، نحو مجتمع متراحم يخدم ويتطوع ويعيد للأسرة والوطن بريقهما في قلب الحياة.
+          </blockquote>
+
+          <p id="mainParagraph" class="lang-note" style="margin-top:12px;">
+            جذوة الرسالة، هي جمعية أسسها أساتذة وتربيون وحقوقيون، انطلاقًا مِن إقليم الخروب لأجل كلّ لبنان. تهتمّ الجمعية بتحصين المجتمع، وبشكل خاص الأجيال الصاعدة، في زمن يُساء فيه استخدام وسائل التواصل، لا سيّما الذكاء الاصطناعي، على نحو يحدِّد سلوكيات الناس بعيدًا عن القيم الحميدة. كما تتخذ الجمعية من العمل التطوعي وسيلة لتهذيب سلوك أبناء الجيل الصاعد، من هنا تسعى الجمعية إلى زرع الرغبة في خدمة الآخرين والتعاطف معهم، على أمل تفعيل وتعميم الخير على المجتمع والوطن. كما تولي الجمعية أهمية كبرى لإعادة الاعتبار لمفهوم الأسرة، ودور المرأة فيها.
+          </p>
+
+          <div class="badge" id="badges">
+            <span class="tag" id="tag1">مرخّصة في لبنان</span>
+            <span class="tag" id="tag2">وزارة الداخلية والبلديات</span>
+            <span class="tag" id="tag3">وزارة التربية والتعليم العالي</span>
+          </div>
+
+          <p class="lang-note" id="licenseNote" style="margin-top:12px;">
+            الجمعية مرخّصة في لبنان بموجب الأصول القانونية لدى وزارة الداخلية والبلديات، وبالتنسيق مع وزارة التربية والتعليم العالي ضمن المجالات ذات الصلة.
+          </p>
+
+          <p class="lang-note" id="heroNote" style="margin-top:10px;">
+            الموقع متاح باللغتين العربية والإنجليزية.
+          </p>
+        </div>
+
+        <div class="card" style="margin:0;">
+          <h2 id="hqTitle">مركز الجمعية</h2>
+          <p id="hqText">
+            مزبود - الشارع العام - العقار رقم ٢٤٨٢ - القسم رقم ٦٤ - مول مزبود - ملك منير على حمية - الطابق الثاني - قضاء الشوف
+          </p>
+
+          <!-- NEW: Mazboud location map -->
+          <h2 id="mapTitle" style="margin-top:14px;">الموقع (مزبود)</h2>
+          <p class="lang-note" id="mapNote">خريطة تقريبية لمزبود - الشوف، لبنان</p>
+          <iframe
+            class="map"
+            id="mapFrame"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Mazboud%2C%20Chouf%2C%20Lebanon&output=embed"
+            title="Mazboud Map">
+          </iframe>
+
+          <p class="lang-note" id="mapLinkWrap" style="margin-top:10px;">
+            <a id="mapLink" target="_blank" rel="noopener"
+               href="https://www.google.com/maps/search/?api=1&query=Mazboud%2C%20Chouf%2C%20Lebanon">
+              فتح الموقع على خرائط Google
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION -->
+    <section class="cards" id="mission" aria-label="Mission and Objectives">
+      <div class="card full">
+        <h2 id="missionTitle">الغاية والأهداف</h2>
+        <p id="missionIntro" style="margin-bottom:10px;">
+          غايتنا: المساهمة في التنمية الثقافية والتطوعية والاجتماعية واحترام القيم الدينية والوطنية والحضارية، وذلك من خلال الأهداف التالية:
+        </p>
+        <ul id="missionList">
+          <li>المساهمة في رفع مستوى التربية والتعليم والوعي الثقافي من خلال إنشاء مدارس ومعاهد وإدارتها ومساعدة أطفال الأسر ذات الدخل المحدود على الحصول على تعليم جيد.</li>
+          <li>إنشاء مراكز تابعة للجمعية للتدريب المختصّين ومساعدة الطلاب الذين يعانون من الصعوبات التعلّمية وتشجيع البحث العلمي والبحوث المشتركة وتبادل نتائجها ومساعدة الخريجين ومحاولة دمجهم في مجال العمل.</li>
+          <li>خلق بيئة تعليمية تحفيزية يمكن أن ترفع مستوى أداء كل من أعضاء هيئة التدريس والطلاب.</li>
+          <li>العمل على تطوير وتنوع المناهج التعليمية، ومواكبة أحدث ما في هذا المجال خاصة فيما يتعلق باستخدام تقنيات وأساليب التدريس والتعلم والتدريب الجديدة، بما يتماشى مع القوانين واللوائح الصادرة عن الهيئات الرسمية المعنية.</li>
+          <li>إقامة المؤتمرات وعقد الندوات وتنظيم اللقاءات التي تدعم أهداف الجمعية.</li>
+          <li>إعداد المشاريع الإنتاجية والمساهمة في تطوير الاقتصاد الأسري من خلال إنشاء المشاريع الإنتاجية الصغيرة والقيام ببعض المشاريع الخيرية لمعونة الشتاء وفرحة العيد.</li>
+          <li>تنمية روح التعاون والعمل التطوعي وبذل الخير للغير وتدريب الشباب والفتيات على الحرف والمهن الاجتماعية المهنية وتعزيز دور المرأة.</li>
+          <li>تعميق حب الوطن، وتعزيز الانتماء إليه، وتعزيز مفهوم المواطنة الصالحة.</li>
+          <li>تقديم الخدمات الصحية التطوعية والخيرية للطلاب وذويهم وأفراد الهيئة التعليمية والمجتمع من خلال إنشاء مستوصفات الرعاية الصحية والمساهمة في رفع الوعي الصحي.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ACTIVITIES -->
+    <section class="cards" id="activities" aria-label="Activities">
+      <div class="card">
+        <h2 id="activitiesTitle">الأنشطة</h2>
+        <ul id="activitiesList">
+          <li>برامج دعم تعليمي ودروس تقوية</li>
+          <li>مساندة صعوبات التعلم والإرشاد التربوي</li>
+          <li>ورش تدريب وتنمية مهارات للشباب والفتيات</li>
+          <li>ندوات ومؤتمرات ولقاءات ثقافية</li>
+          <li>مبادرات تطوعية ومجتمعية ومشاريع خيرية</li>
+          <li>حملات توعية صحية ومساعدات طبية خيرية</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2 id="valuesTitle">قيمنا</h2>
+        <ul id="valuesList">
+          <li>احترام القيم الدينية والوطنية</li>
+          <li>العمل التطوعي وخدمة المجتمع</li>
+          <li>الشفافية والعمل بروح الفريق</li>
+          <li>تعليم نوعي وتكافؤ الفرص</li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="card full" id="contact">
+        <h2 id="contactTitle">تواصل معنا</h2>
+        <p id="contactLead">للتواصل والاستفسار:</p>
+
+        <div class="contact-grid">
+          <div class="field">
+            <strong id="cEmailLabel">البريد الإلكتروني:</strong>
+            <a id="cEmail" href="mailto:hamiehmounir975@gmail.com">hamiehmounir975@gmail.com</a>
+          </div>
+          <div class="field">
+            <strong id="cPhoneLabel">الهاتف/واتساب:</strong>
+            <a id="cPhone" href="tel:+9617242467">07 242 467</a>
+          </div>
+          <div class="field">
+            <strong id="cAddressLabel">العنوان:</strong>
+            <span id="cAddress">مزبود - قضاء الشوف - لبنان</span>
+          </div>
+          <div class="field">
+            <strong id="cSocialLabel">وسائل التواصل:</strong>
+            <span id="cSocial">@yourhandle</span>
+          </div>
+        </div>
+
+        <p class="lang-note" id="contactNote" style="margin-top:12px;">
+          ملاحظة: يمكن إضافة نموذج تواصل (Contact Form) أو تعديل روابط التواصل الاجتماعي عند تزويدنا بالحسابات الرسمية.
+        </p>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div id="footerLeft">© <span id="year"></span> جمعية جذوة الرسالة</div>
+      <div id="footerRight">موقع بسيط ثنائي اللغة (عربي/إنجليزي)</div>
+    </div>
+  </div>
+
+  <script>
+    const content = {
+      ar: {
+        dir: "rtl",
+        langBtn: "EN",
+        nav: { about:"عن الجمعية", mission:"الغاية والأهداف", activities:"الأنشطة", contact:"تواصل معنا" },
+        brandTitle: "جمعية جذوة الرسالة",
+        brandSub: "جمعية تربوية • ثقافية • تطوعية • تنموية",
+
+        heroPill: "جمعية مُرخّصة حديثًا في لبنان",
+        heroTitle: "جمعية جذوة الرسالة",
+        heroLead: "جمعية تربوية ثقافية تطوعية تُسهم في التنمية الاجتماعية، وترتكز على احترام القيم الدينية والوطنية والحضارية.",
+
+        definitionTitle: "جملة تعريفية بالجمعية:",
+        definitionLine: "جمعية جذوة الرسالة ومضة تربوية، توقد وعي الأجيال بقيم راسخة، نحو مجتمع متراحم يخدم ويتطوع ويعيد للأسرة والوطن بريقهما في قلب الحياة.",
+        mainParagraph:
+          "جذوة الرسالة، هي جمعية أسسها أساتذة وتربيون وحقوقيون، انطلاقًا مِن إقليم الخروب لأجل كلّ لبنان. تهتمّ الجمعية بتحصين المجتمع، وبشكل خاص الأجيال الصاعدة، في زمن يُساء فيه استخدام وسائل التواصل، لا سيّما الذكاء الاصطناعي، على نحو يحدِّد سلوكيات الناس بعيدًا عن القيم الحميدة. كما تتخذ الجمعية من العمل التطوعي وسيلة لتهذيب سلوك أبناء الجيل الصاعد، من هنا تسعى الجمعية إلى زرع الرغبة في خدمة الآخرين والتعاطف معهم، على أمل تفعيل وتعميم الخير على المجتمع والوطن. كما تولي الجمعية أهمية كبرى لإعادة الاعتبار لمفهوم الأسرة، ودور المرأة فيها.",
+
+        tag1:"مرخّصة في لبنان",
+        tag2:"وزارة الداخلية والبلديات",
+        tag3:"وزارة التربية والتعليم العالي",
+
+        licenseNote:"الجمعية مرخّصة في لبنان بموجب الأصول القانونية لدى وزارة الداخلية والبلديات، وبالتنسيق مع وزارة التربية والتعليم العالي ضمن المجالات ذات الصلة.",
+        heroNote:"الموقع متاح باللغتين العربية والإنجليزية.",
+
+        hqTitle:"مركز الجمعية",
+        hqText:"مزبود - الشارع العام - العقار رقم ٢٤٨٢ - القسم رقم ٦٤ - مول مزبود - ملك منير على حمية - الطابق الثاني - قضاء الشوف",
+
+        mapTitle:"الموقع (مزبود)",
+        mapNote:"خريطة تقريبية لمزبود - الشوف، لبنان",
+        mapLinkText:"فتح الموقع على خرائط Google",
+
+        missionTitle:"الغاية والأهداف",
+        missionIntro:"غايتنا: المساهمة في التنمية الثقافية والتطوعية والاجتماعية واحترام القيم الدينية والوطنية والحضارية، وذلك من خلال الأهداف التالية:",
+        missionList:[
+          "المساهمة في رفع مستوى التربية والتعليم والوعي الثقافي من خلال إنشاء مدارس ومعاهد وإدارتها ومساعدة أطفال الأسر ذات الدخل المحدود على الحصول على تعليم جيد.",
+          "إنشاء مراكز تابعة للجمعية للتدريب المختصّين ومساعدة الطلاب الذين يعانون من الصعوبات التعلّمية وتشجيع البحث العلمي والبحوث المشتركة وتبادل نتائجها ومساعدة الخريجين ومحاولة دمجهم في مجال العمل.",
+          "خلق بيئة تعليمية تحفيزية يمكن أن ترفع مستوى أداء كل من أعضاء هيئة التدريس والطلاب.",
+          "العمل على تطوير وتنوع المناهج التعليمية، ومواكبة أحدث ما في هذا المجال خاصة فيما يتعلق باستخدام تقنيات وأساليب التدريس والتعلم والتدريب الجديدة، بما يتماشى مع القوانين واللوائح الصادرة عن الهيئات الرسمية المعنية.",
+          "إقامة المؤتمرات وعقد الندوات وتنظيم اللقاءات التي تدعم أهداف الجمعية.",
+          "إعداد المشاريع الإنتاجية والمساهمة في تطوير الاقتصاد الأسري من خلال إنشاء المشاريع الإنتاجية الصغيرة والقيام ببعض المشاريع الخيرية لمعونة الشتاء وفرحة العيد.",
+          "تنمية روح التعاون والعمل التطوعي وبذل الخير للغير وتدريب الشباب والفتيات على الحرف والمهن الاجتماعية المهنية وتعزيز دور المرأة.",
+          "تعميق حب الوطن، وتعزيز الانتماء إليه، وتعزيز مفهوم المواطنة الصالحة.",
+          "تقديم الخدمات الصحية التطوعية والخيرية للطلاب وذويهم وأفراد الهيئة التعليمية والمجتمع من خلال إنشاء مستوصفات الرعاية الصحية والمساهمة في رفع الوعي الصحي."
+        ],
+
+        activitiesTitle:"الأنشطة",
+        activitiesList:[
+          "برامج دعم تعليمي ودروس تقوية",
+          "مساندة صعوبات التعلم والإرشاد التربوي",
+          "ورش تدريب وتنمية مهارات للشباب والفتيات",
+          "ندوات ومؤتمرات ولقاءات ثقافية",
+          "مبادرات تطوعية ومجتمعية ومشاريع خيرية",
+          "حملات توعية صحية ومساعدات طبية خيرية"
+        ],
+
+        valuesTitle:"قيمنا",
+        valuesList:[
+          "احترام القيم الدينية والوطنية",
+          "العمل التطوعي وخدمة المجتمع",
+          "الشفافية والعمل بروح الفريق",
+          "تعليم نوعي وتكافؤ الفرص"
+        ],
+
+        contactTitle:"تواصل معنا",
+        contactLead:"للتواصل والاستفسار:",
+        cEmailLabel:"البريد الإلكتروني:",
+        cPhoneLabel:"الهاتف/واتساب:",
+        cAddressLabel:"العنوان:",
+        cSocialLabel:"وسائل التواصل:",
+        cAddress:"مزبود - قضاء الشوف - لبنان",
+        contactNote:"ملاحظة: يمكن إضافة نموذج تواصل (Contact Form) أو تعديل روابط التواصل الاجتماعي عند تزويدنا بالحسابات الرسمية.",
+
+        footerRight:"موقع بسيط ثنائي اللغة (عربي/إنجليزي)"
+      },
+
+      en: {
+        dir: "ltr",
+        langBtn: "العربية",
+        nav: { about:"About", mission:"Mission", activities:"Activities", contact:"Contact" },
+        brandTitle: "Jazwat AlRisala Association",
+        brandSub: "Educational • Cultural • Volunteering • Social Development",
+
+        heroPill: "A newly permitted association in Lebanon",
+        heroTitle: "Jazwat AlRisala Association",
+        heroLead: "An educational and cultural association contributing to social development while respecting religious, national, and civilizational values.",
+
+        definitionTitle: "Association definition:",
+        definitionLine: "Jazwat AlRisala is an educational spark that lights generations with firm values—towards a compassionate society that serves, volunteers, and restores the glow of family and الوطن at the heart of life.",
+        mainParagraph:
+          "Jazwat AlRisala was founded by educators and legal professionals, starting from Iqlim Al-Kharoub for all of Lebanon. The association strengthens society—especially young generations—at a time when social media (and AI) can be misused to shape behavior away from good values. We use volunteering as a method to refine youth behavior, cultivate empathy, and encourage serving others, hoping to spread الخير across society and الوطن. We also give great importance to restoring the concept of family and the role of women within it.",
+
+        tag1:"Licensed in Lebanon",
+        tag2:"Ministry of Interior",
+        tag3:"Ministry of Education",
+
+        licenseNote:"The association is legally permitted in Lebanon under the Ministry of Interior and Municipalities and coordinates with the Ministry of Education and Higher Education in relevant areas.",
+        heroNote:"This website is available in Arabic and English.",
+
+        hqTitle:"Headquarters",
+        hqText:"Mazboud – Main Road – Property No. 2482 – Section No. 64 – Mazboud Mall – Owned by Mounir Ali Hamieh – 2nd Floor – Chouf District.",
+
+        mapTitle:"Location (Mazboud)",
+        mapNote:"Approximate map for Mazboud – Chouf, Lebanon",
+        mapLinkText:"Open in Google Maps",
+
+        missionTitle:"Mission & Objectives",
+        missionIntro:"Our purpose is to support cultural, volunteering, and social development through the following goals:",
+        missionList:[
+          "Improve education and cultural awareness by establishing and managing schools/institutes and supporting children from limited-income families to access quality education.",
+          "Establish centers for specialist training; support students with learning difficulties; encourage scientific research, joint research, and exchange of results; support graduates and help integrate them into the job market.",
+          "Create a motivating learning environment that enhances the performance of faculty members and students.",
+          "Develop and diversify curricula, adopting modern teaching and training methods in line with official laws and regulations.",
+          "Hold conferences, seminars, and meetings that support the association’s goals.",
+          "Support family economy through small productive initiatives; carry out charitable projects (winter support, Eid initiatives).",
+          "Promote cooperation and volunteering; train youth on crafts and social/professional skills; empower women’s role.",
+          "Strengthen belonging and promote good citizenship.",
+          "Provide voluntary and charitable health services by supporting clinics and raising health awareness."
+        ],
+
+        activitiesTitle:"Activities",
+        activitiesList:[
+          "Education support and tutoring programs",
+          "Support for learning difficulties",
+          "Workshops and skills training",
+          "Seminars, conferences, and cultural events",
+          "Volunteering and community initiatives",
+          "Health awareness and charitable medical support"
+        ],
+
+        valuesTitle:"Our Values",
+        valuesList:[
+          "Respect for religious and national values",
+          "Community service and volunteering",
+          "Transparency and teamwork",
+          "Quality education and equal opportunity"
+        ],
+
+        contactTitle:"Contact",
+        contactLead:"For inquiries:",
+        cEmailLabel:"Email:",
+        cPhoneLabel:"Phone/WhatsApp:",
+        cAddressLabel:"Address:",
+        cSocialLabel:"Social:",
+        cAddress:"Mazboud – Chouf, Lebanon",
+        contactNote:"Note: A contact form can be added if you provide the service/link.",
+
+        footerRight:"A simple bilingual website (AR/EN)"
+      }
+    };
+
+    let current = "ar";
+
+    function setLang(lang){
+      current = lang;
+      const t = content[lang];
+
+      document.documentElement.lang = (lang === "ar") ? "ar" : "en";
+      document.documentElement.dir = t.dir;
+
+      // Brand
+      document.getElementById("brandTitle").textContent = t.brandTitle;
+      document.getElementById("brandSub").textContent = t.brandSub;
+
+      // Nav + button
+      document.getElementById("langBtn").textContent = t.langBtn;
+      document.getElementById("navAbout").textContent = t.nav.about;
+      document.getElementById("navMission").textContent = t.nav.mission;
+      document.getElementById("navActivities").textContent = t.nav.activities;
+      document.getElementById("navContact").textContent = t.nav.contact;
+
+      // Hero
+      document.getElementById("heroPill").textContent = t.heroPill;
+      document.getElementById("heroTitle").textContent = t.heroTitle;
+      document.getElementById("heroLead").textContent = t.heroLead;
+
+      // Definition block
+      document.getElementById("mainDefinition").innerHTML =
+        `<strong>${t.definitionTitle}</strong> ${t.definitionLine}`;
+
+      document.getElementById("mainParagraph").textContent = t.mainParagraph;
+
+      // Tags + license note
+      document.getElementById("tag1").textContent = t.tag1;
+      document.getElementById("tag2").textContent = t.tag2;
+      document.getElementById("tag3").textContent = t.tag3;
+      document.getElementById("licenseNote").textContent = t.licenseNote;
+      document.getElementById("heroNote").textContent = t.heroNote;
+
+      // HQ
+      document.getElementById("hqTitle").textContent = t.hqTitle;
+      document.getElementById("hqText").textContent = t.hqText;
+
+      // Map labels
+      document.getElementById("mapTitle").textContent = t.mapTitle;
+      document.getElementById("mapNote").textContent = t.mapNote;
+      document.getElementById("mapLink").textContent = t.mapLinkText;
+
+      // Mission
+      document.getElementById("missionTitle").textContent = t.missionTitle;
+      document.getElementById("missionIntro").textContent = t.missionIntro;
+
+      const ml = document.getElementById("missionList");
+      ml.innerHTML = "";
+      t.missionList.forEach(item=>{
+        const li = document.createElement("li");
+        li.textContent = item;
+        ml.appendChild(li);
+      });
+
+      // Activities
+      document.getElementById("activitiesTitle").textContent = t.activitiesTitle;
+      const al = document.getElementById("activitiesList");
+      al.innerHTML = "";
+      t.activitiesList.forEach(item=>{
+        const li = document.createElement("li");
+        li.textContent = item;
+        al.appendChild(li);
+      });
+
+      // Values
+      document.getElementById("valuesTitle").textContent = t.valuesTitle;
+      const vl = document.getElementById("valuesList");
+      vl.innerHTML = "";
+      t.valuesList.forEach(item=>{
+        const li = document.createElement("li");
+        li.textContent = item;
+        vl.appendChild(li);
+      });
+
+      // Contact labels
+      document.getElementById("contactTitle").textContent = t.contactTitle;
+      document.getElementById("contactLead").textContent = t.contactLead;
+      document.getElementById("cEmailLabel").textContent = t.cEmailLabel;
+      document.getElementById("cPhoneLabel").textContent = t.cPhoneLabel;
+      document.getElementById("cAddressLabel").textContent = t.cAddressLabel;
+      document.getElementById("cSocialLabel").textContent = t.cSocialLabel;
+      document.getElementById("cAddress").textContent = t.cAddress;
+      document.getElementById("contactNote").textContent = t.contactNote;
+
+      // Footer + year
+      document.getElementById("year").textContent = new Date().getFullYear();
+      document.getElementById("footerRight").textContent = t.footerRight;
+    }
+
+    function toggleLang(){
+      setLang(current === "ar" ? "en" : "ar");
+    }
+
+    function scrollToSection(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.scrollIntoView({behavior:"smooth", block:"start"});
+    }
+
+    // init
+    setLang("ar");
+  </script>
+</body>
+</html>
