@@ -14,7 +14,7 @@
       --muted:#b7c3e6;
       --accent:#6ee7ff;
       --border:rgba(255,255,255,.12);
-      --radius:16px;
+      --radius:18px;
     }
     *{box-sizing:border-box}
     body{
@@ -28,7 +28,7 @@
     a:hover{text-decoration:underline}
 
     .container{
-      max-width:1100px;
+      max-width:1200px;
       margin:auto;
       padding:24px;
     }
@@ -37,48 +37,36 @@
     .header{
       display:flex;
       align-items:center;
-      gap:18px;
-      padding:16px 20px;
+      gap:24px;
+      padding:22px 26px;
       border:1px solid var(--border);
       border-radius:var(--radius);
-      background:rgba(15,26,46,.85);
-      margin-bottom:20px;
-    }
-
-    .logo-wrap{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    .logo-title{
-      font-weight:700;
-      font-size:14px;
-      color:var(--muted);
-      white-space:nowrap;
+      background:rgba(15,26,46,.9);
+      margin-bottom:26px;
     }
 
     .logo{
-      width:90px;
+      width:160px;          /* 🔥 BIGGER LOGO */
       height:auto;
-      border-radius:12px;
-      background:rgba(255,255,255,.04);
-      padding:6px;
-      border:1px solid var(--border);
+      border-radius:16px;
+      background:#fff;      /* makes logo very clear */
+      padding:10px;
+      border:2px solid var(--border);
     }
 
     .brand{
       display:flex;
       flex-direction:column;
+      justify-content:center;
     }
     .brand h1{
       margin:0;
-      font-size:22px;
+      font-size:28px;
       font-weight:900;
     }
     .brand p{
-      margin:0;
-      font-size:13px;
+      margin:4px 0 0;
+      font-size:14px;
       color:var(--muted);
     }
 
@@ -86,53 +74,58 @@
     .section{
       border:1px solid var(--border);
       border-radius:var(--radius);
-      padding:22px;
-      background:rgba(15,26,46,.7);
-      margin-bottom:20px;
+      padding:26px;
+      background:rgba(15,26,46,.75);
+      margin-bottom:24px;
     }
     h2{margin-top:0}
     p,li{color:var(--muted)}
-    ul{padding-right:18px}
+    ul{padding-right:20px}
 
     blockquote{
-      border-right:4px solid var(--accent);
-      padding:14px;
-      margin:14px 0;
-      background:rgba(110,231,255,.08);
-      border-radius:12px;
+      border-right:5px solid var(--accent);
+      padding:16px;
+      margin:16px 0;
+      background:rgba(110,231,255,.1);
+      border-radius:14px;
       color:#fff;
     }
 
     .grid{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:14px;
+      gap:16px;
     }
-    @media(max-width:800px){
+    @media(max-width:900px){
       .grid{grid-template-columns:1fr}
-      .header{flex-direction:column;text-align:center}
-      .logo-wrap{justify-content:center}
+      .header{
+        flex-direction:column;
+        text-align:center;
+      }
+      .logo{
+        width:180px;
+      }
     }
 
     .field{
       border:1px solid var(--border);
-      padding:10px 12px;
-      border-radius:12px;
-      background:rgba(255,255,255,.04);
+      padding:12px 14px;
+      border-radius:14px;
+      background:rgba(255,255,255,.05);
     }
 
     iframe{
       width:100%;
-      height:260px;
+      height:300px;
       border:0;
-      border-radius:12px;
+      border-radius:14px;
     }
 
     footer{
       text-align:center;
       font-size:13px;
       color:var(--muted);
-      margin-top:20px;
+      margin-top:30px;
     }
   </style>
 </head>
@@ -140,12 +133,9 @@
 <body>
 <div class="container">
 
-  <!-- HEADER WITH LOGO + TITLE -->
+  <!-- HEADER WITH BIG CLEAR LOGO -->
   <div class="header">
-    <div class="logo-wrap">
-      <span class="logo-title">Logo:</span>
-      <img src="logo.jpg" alt="شعار جمعية جذوة الرسالة" class="logo">
-    </div>
+    <img src="logo.jpg" alt="شعار جمعية جذوة الرسالة" class="logo">
 
     <div class="brand">
       <h1>جمعية جذوة الرسالة</h1>
@@ -169,7 +159,8 @@
 
     <p>
       جذوة الرسالة جمعية أسسها أساتذة وتربويون وحقوقيون، انطلاقًا من إقليم الخروب لأجل
-      كلّ لبنان، وتعتمد العمل التطوعي وسيلة لتهذيب السلوك وتعزيز دور الأسرة والمرأة.
+      كلّ لبنان، وتهتم بتحصين المجتمع، ولا سيّما الأجيال الصاعدة، وتعتمد العمل التطوعي
+      وسيلة لتهذيب السلوك وتعزيز دور الأسرة والمرأة.
     </p>
   </section>
 
