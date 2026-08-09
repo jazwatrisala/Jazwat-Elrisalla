@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>جمعية جذوة الرسالة</title>
   <meta name="description" content="جمعية جذوة الرسالة - جمعية تربوية ثقافية تطوعية مرخّصة في لبنان">
-
   <style>
     :root{
       --bg:#0b1220;
@@ -13,10 +12,16 @@
       --text:#e9eefc;
       --muted:#b7c3e6;
       --accent:#6ee7ff;
+      --accent-dark:#082f49;
+      --gold:#fbbf24;
       --border:rgba(255,255,255,.12);
-      --radius:18px;
+      --radius:16px;
     }
+
     *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
     body{
       margin:0;
       font-family:"Noto Naskh Arabic","Segoe UI",Tahoma,Arial,sans-serif;
@@ -24,11 +29,12 @@
       color:var(--text);
       line-height:1.9;
     }
-    a{color:var(--accent); text-decoration:none}
+
+    a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
 
     .container{
-      max-width:1200px;
+      max-width:1100px;
       margin:auto;
       padding:24px;
     }
@@ -37,198 +43,413 @@
     .header{
       display:flex;
       align-items:center;
-      gap:24px;
-      padding:22px 26px;
+      gap:18px;
+      padding:16px 20px;
       border:1px solid var(--border);
       border-radius:var(--radius);
-      background:rgba(15,26,46,.9);
-      margin-bottom:26px;
+      background:rgba(15,26,46,.85);
+      margin-bottom:20px;
+    }
+
+    .logo-wrap{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .logo-title{
+      font-weight:700;
+      font-size:14px;
+      color:var(--muted);
+      white-space:nowrap;
     }
 
     .logo{
-      width:160px;          /* 🔥 BIGGER LOGO */
+      width:90px;
       height:auto;
-      border-radius:16px;
-      background:#fff;      /* makes logo very clear */
-      padding:10px;
-      border:2px solid var(--border);
+      border-radius:12px;
+      background:rgba(255,255,255,.04);
+      padding:6px;
+      border:1px solid var(--border);
     }
 
     .brand{
       display:flex;
       flex-direction:column;
-      justify-content:center;
     }
+
     .brand h1{
       margin:0;
-      font-size:28px;
+      font-size:22px;
       font-weight:900;
     }
+
     .brand p{
-      margin:4px 0 0;
-      font-size:14px;
+      margin:0;
+      font-size:13px;
       color:var(--muted);
     }
 
-    /* SECTIONS */
+    /* PROMINENT STUDENT ANNOUNCEMENT */
+    .announcement{
+      position:relative;
+      overflow:hidden;
+      border:2px solid var(--gold);
+      border-radius:var(--radius);
+      padding:24px;
+      margin-bottom:20px;
+      background:
+        radial-gradient(circle at top left, rgba(251,191,36,.20), transparent 35%),
+        linear-gradient(135deg, rgba(14,116,144,.35), rgba(15,26,46,.96));
+      box-shadow:0 14px 35px rgba(0,0,0,.28);
+    }
+
+    .announcement::after{
+      content:"";
+      position:absolute;
+      inset:auto -60px -90px auto;
+      width:190px;
+      height:190px;
+      border-radius:50%;
+      background:rgba(110,231,255,.10);
+      pointer-events:none;
+    }
+
+    .announcement-top{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:6px;
+    }
+
+    .new-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:3px 12px;
+      border-radius:999px;
+      background:var(--gold);
+      color:#1f2937;
+      font-weight:900;
+      font-size:14px;
+    }
+
+    .announcement h2{
+      margin:0;
+      color:#fff;
+      font-size:clamp(22px,4vw,30px);
+    }
+
+    .announcement > p{
+      margin:6px 0 18px;
+      color:#e5edff;
+      font-size:16px;
+    }
+
+    .document-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+      position:relative;
+      z-index:1;
+    }
+
+    .document-card{
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:14px;
+      background:rgba(255,255,255,.07);
+      padding:17px;
+    }
+
+    .document-card h3{
+      margin:0 0 5px;
+      color:#fff;
+      font-size:18px;
+    }
+
+    .document-card p{
+      margin:0 0 13px;
+      color:#d1dcf8;
+      font-size:14px;
+    }
+
+    .button-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:120px;
+      padding:9px 16px;
+      border-radius:10px;
+      font-weight:800;
+      transition:transform .15s ease,filter .15s ease;
+    }
+
+    .button:hover{
+      text-decoration:none;
+      transform:translateY(-1px);
+      filter:brightness(1.06);
+    }
+
+    .button-open{
+      background:var(--accent);
+      color:var(--accent-dark);
+    }
+
+    .button-download{
+      color:#fff;
+      border:1px solid rgba(255,255,255,.32);
+      background:rgba(255,255,255,.08);
+    }
+
+    /* OFFICIAL DOCUMENT */
+    .official-document{
+      display:grid;
+      grid-template-columns:minmax(220px,320px) 1fr;
+      gap:20px;
+      align-items:center;
+    }
+
+    .official-document-preview{
+      display:block;
+      border:1px solid var(--border);
+      border-radius:14px;
+      overflow:hidden;
+      background:rgba(255,255,255,.04);
+    }
+
+    .official-document-preview img{
+      display:block;
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      object-position:center top;
+    }
+
+    .official-document-info p{
+      margin-top:0;
+    }
+
+    /* GENERAL SECTIONS */
     .section{
       border:1px solid var(--border);
       border-radius:var(--radius);
-      padding:26px;
-      background:rgba(15,26,46,.75);
-      margin-bottom:24px;
+      padding:22px;
+      background:rgba(15,26,46,.7);
+      margin-bottom:20px;
     }
+
     h2{margin-top:0}
     p,li{color:var(--muted)}
-    ul{padding-right:20px}
+    ul{padding-right:18px}
 
     blockquote{
-      border-right:5px solid var(--accent);
-      padding:16px;
-      margin:16px 0;
-      background:rgba(110,231,255,.1);
-      border-radius:14px;
+      border-right:4px solid var(--accent);
+      padding:14px;
+      margin:14px 0;
+      background:rgba(110,231,255,.08);
+      border-radius:12px;
       color:#fff;
     }
 
     .grid{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:16px;
-    }
-    @media(max-width:900px){
-      .grid{grid-template-columns:1fr}
-      .header{
-        flex-direction:column;
-        text-align:center;
-      }
-      .logo{
-        width:180px;
-      }
+      gap:14px;
     }
 
     .field{
       border:1px solid var(--border);
-      padding:12px 14px;
-      border-radius:14px;
-      background:rgba(255,255,255,.05);
+      padding:10px 12px;
+      border-radius:12px;
+      background:rgba(255,255,255,.04);
     }
 
     iframe{
       width:100%;
-      height:300px;
+      height:260px;
       border:0;
-      border-radius:14px;
+      border-radius:12px;
     }
 
     footer{
       text-align:center;
       font-size:13px;
       color:var(--muted);
-      margin-top:30px;
+      margin-top:20px;
+    }
+
+    @media(max-width:800px){
+      .grid,.document-grid,.official-document{grid-template-columns:1fr}
+      .header{flex-direction:column;text-align:center}
+      .logo-wrap{justify-content:center}
+      .announcement{padding:20px}
+      .button{flex:1}
     }
   </style>
 </head>
-
 <body>
-<div class="container">
-
-  <!-- HEADER WITH BIG CLEAR LOGO -->
-  <div class="header">
-    <img src="logo.jpg" alt="شعار جمعية جذوة الرسالة" class="logo">
-
-    <div class="brand">
-      <h1>جمعية جذوة الرسالة</h1>
-      <p>جمعية تربوية • ثقافية • تطوعية • تنموية (مرخّصة في لبنان)</p>
+  <div class="container">
+    <!-- HEADER WITH LOGO + TITLE -->
+    <div class="header">
+      <div class="logo-wrap">
+        <span class="logo-title">الشعار:</span>
+        <img src="logo.jpg" alt="شعار جمعية جذوة الرسالة" class="logo">
+      </div>
+      <div class="brand">
+        <h1>جمعية جذوة الرسالة</h1>
+        <p>جمعية تربوية • ثقافية • تطوعية • تنموية (مرخّصة في لبنان)</p>
+      </div>
     </div>
+
+    <!-- VISIBLE IMMEDIATELY WHEN STUDENTS OPEN THE PAGE -->
+    <section class="announcement" aria-labelledby="competition-title">
+      <div class="announcement-top">
+        <span class="new-badge">جديد للطلاب</span>
+        <h2 id="competition-title">نموذج مسابقة الرياضيات لقسم العلوم العامة</h2>
+      </div>
+      <p>يمكن فتح نموذج المسابقة مباشرة أو تنزيله، وهو متاح باللغتين الإنكليزية والفرنسية.</p>
+
+      <div class="document-grid">
+        <article class="document-card">
+          <h3>النسخة الإنكليزية</h3>
+          <p>English version — PDF</p>
+          <div class="button-row">
+            <a class="button button-open"
+               href="math-competition-general-sciences-english.pdf"
+               target="_blank" rel="noopener">فتح الملف</a>
+            <a class="button button-download"
+               href="math-competition-general-sciences-english.pdf"
+               download>تنزيل الملف</a>
+          </div>
+        </article>
+
+        <article class="document-card">
+          <h3>النسخة الفرنسية</h3>
+          <p>Version française — PDF</p>
+          <div class="button-row">
+            <a class="button button-open"
+               href="math-competition-general-sciences-french.pdf"
+               target="_blank" rel="noopener">فتح الملف</a>
+            <a class="button button-download"
+               href="math-competition-general-sciences-french.pdf"
+               download>تنزيل الملف</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- OFFICIAL ASSOCIATION DOCUMENT -->
+    <section class="section" aria-labelledby="official-document-title">
+      <h2 id="official-document-title">إفادة رسمية للجمعية</h2>
+      <div class="official-document">
+        <a class="official-document-preview"
+           href="official-association-certificate.jpg"
+           target="_blank" rel="noopener"
+           aria-label="فتح الإفادة الرسمية في نافذة جديدة">
+          <img src="official-association-certificate.jpg" alt="إفادة رسمية خاصة بجمعية جذوة الرسالة">
+        </a>
+        <div class="official-document-info">
+          <p>يمكن الاطلاع على الإفادة الرسمية الخاصة بالجمعية في نافذة مستقلة أو تنزيل الصورة.</p>
+          <div class="button-row">
+            <a class="button button-open"
+               href="official-association-certificate.jpg"
+               target="_blank" rel="noopener">فتح في نافذة جديدة</a>
+            <a class="button button-download"
+               href="official-association-certificate.jpg"
+               download>تنزيل الصورة</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section">
+      <h2>نبذة عن الجمعية</h2>
+      <p>
+        جمعية تربوية ثقافية تطوعية تُسهم في التنمية الاجتماعية، وترتكز على احترام القيم
+        الدينية والوطنية والحضارية، ومرخّصة أصولًا في لبنان.
+      </p>
+      <blockquote>
+        <strong>جملة تعريفية بالجمعية:</strong><br>
+        جمعية جذوة الرسالة ومضة تربوية، توقد وعي الأجيال بقيم راسخة،
+        نحو مجتمع متراحم يخدم ويتطوع ويعيد للأسرة والوطن بريقهما في قلب الحياة.
+      </blockquote>
+      <p>
+        جذوة الرسالة جمعية أسسها أساتذة وتربويون وحقوقيون، انطلاقًا من إقليم الخروب لأجل
+        كلّ لبنان، وتعتمد العمل التطوعي وسيلة لتهذيب السلوك وتعزيز دور الأسرة والمرأة.
+      </p>
+    </section>
+
+    <!-- OBJECTIVES -->
+    <section class="section">
+      <h2>الغاية والأهداف</h2>
+      <ul>
+        <li>رفع مستوى التربية والتعليم والوعي الثقافي.</li>
+        <li>دعم الطلاب ذوي صعوبات التعلم وتشجيع البحث العلمي.</li>
+        <li>تنمية روح التطوع وخدمة المجتمع.</li>
+        <li>تعزيز مفهوم الأسرة ودور المرأة.</li>
+        <li>ترسيخ المواطنة الصالحة والانتماء الوطني.</li>
+      </ul>
+    </section>
+
+    <!-- PROGRAMS -->
+    <section class="section">
+      <h2>البرامج والأنشطة الجارية</h2>
+      <p>أطلقت الجمعية قناة تعليمية مجانية لدعم طلاب المرحلة الثانوية في مادة الرياضيات.</p>
+      <p>
+        <a target="_blank" rel="noopener"
+           href="https://youtube.com/playlist?list=PLOF7S0hul0PVo3J8MUl8W2I0l0hpkTp8h&amp;si=iP9rX-LUp9GJy4jA">
+          زيارة قناة تعليم الرياضيات على YouTube
+        </a>
+      </p>
+    </section>
+
+    <!-- LOCATION -->
+    <section class="section">
+      <h2>مركز الجمعية – مزبود</h2>
+      <p>مزبود – قضاء الشوف – لبنان</p>
+      <iframe
+        title="موقع مركز جمعية جذوة الرسالة في مزبود"
+        loading="lazy"
+        src="https://www.google.com/maps?q=Mazboud%2C%20Chouf%2C%20Lebanon&amp;output=embed">
+      </iframe>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section">
+      <h2>تواصل معنا</h2>
+      <div class="grid">
+        <div class="field">
+          <strong>البريد الإلكتروني:</strong><br>
+          <a href="mailto:hamiehmounir975@gmail.com">hamiehmounir975@gmail.com</a>
+        </div>
+        <div class="field">
+          <strong>الهاتف:</strong><br>
+          <a href="tel:+9617242467">+961 7 242 467</a>
+        </div>
+        <div class="field">
+          <strong>واتساب:</strong><br>
+          <a target="_blank" rel="noopener" href="https://wa.me/9613376654">+961 3 376 654</a>
+        </div>
+        <div class="field">
+          <strong>العنوان:</strong><br>
+          مزبود – قضاء الشوف – لبنان
+        </div>
+      </div>
+    </section>
+
+    <footer>© <span id="year"></span> جمعية جذوة الرسالة</footer>
   </div>
 
-  <!-- ABOUT -->
-  <section class="section">
-    <h2>نبذة عن الجمعية</h2>
-    <p>
-      جمعية تربوية ثقافية تطوعية تُسهم في التنمية الاجتماعية، وترتكز على احترام القيم
-      الدينية والوطنية والحضارية، ومرخّصة أصولًا في لبنان.
-    </p>
-
-    <blockquote>
-      <strong>جملة تعريفية بالجمعية:</strong><br>
-      جمعية جذوة الرسالة ومضة تربوية، توقد وعي الأجيال بقيم راسخة،
-      نحو مجتمع متراحم يخدم ويتطوع ويعيد للأسرة والوطن بريقهما في قلب الحياة.
-    </blockquote>
-
-    <p>
-      جذوة الرسالة جمعية أسسها أساتذة وتربويون وحقوقيون، انطلاقًا من إقليم الخروب لأجل
-      كلّ لبنان، وتهتم بتحصين المجتمع، ولا سيّما الأجيال الصاعدة، وتعتمد العمل التطوعي
-      وسيلة لتهذيب السلوك وتعزيز دور الأسرة والمرأة.
-    </p>
-  </section>
-
-  <!-- OBJECTIVES -->
-  <section class="section">
-    <h2>الغاية والأهداف</h2>
-    <ul>
-      <li>رفع مستوى التربية والتعليم والوعي الثقافي.</li>
-      <li>دعم الطلاب ذوي صعوبات التعلم وتشجيع البحث العلمي.</li>
-      <li>تنمية روح التطوع وخدمة المجتمع.</li>
-      <li>تعزيز مفهوم الأسرة ودور المرأة.</li>
-      <li>ترسيخ المواطنة الصالحة والانتماء الوطني.</li>
-    </ul>
-  </section>
-
-  <!-- PROGRAMS -->
-  <section class="section">
-    <h2>البرامج والأنشطة الجارية</h2>
-    <p>
-      أطلقت الجمعية قناة تعليمية مجانية لدعم طلاب المرحلة الثانوية في مادة الرياضيات.
-    </p>
-    <p>
-      👉 <a target="_blank"
-         href="https://youtube.com/playlist?list=PLOF7S0hul0PVo3J8MUl8W2I0l0hpkTp8h&si=iP9rX-LUp9GJy4jA">
-        زيارة قناة تعليم الرياضيات على YouTube
-      </a>
-    </p>
-  </section>
-
-  <!-- LOCATION -->
-  <section class="section">
-    <h2>مركز الجمعية – مزبود</h2>
-    <p>مزبود – قضاء الشوف – لبنان</p>
-    <iframe src="https://www.google.com/maps?q=Mazboud%2C%20Chouf%2C%20Lebanon&output=embed"></iframe>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section">
-    <h2>تواصل معنا</h2>
-    <div class="grid">
-      <div class="field">
-        <strong>البريد الإلكتروني:</strong><br>
-        <a href="mailto:hamiehmounir975@gmail.com">hamiehmounir975@gmail.com</a>
-      </div>
-      <div class="field">
-        <strong>الهاتف:</strong><br>
-        <a href="tel:+9617242467">+961 7 242 467</a>
-      </div>
-      <div class="field">
-        <strong>واتساب:</strong><br>
-        <a target="_blank" href="https://wa.me/9613376654">+961 3 376 654</a>
-      </div>
-      <div class="field">
-        <strong>العنوان:</strong><br>
-        مزبود – قضاء الشوف – لبنان
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    © <span id="year"></span> جمعية جذوة الرسالة
-  </footer>
-
-</div>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
